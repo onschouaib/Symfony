@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+{% block monTitre %}
+    Administration des aliments
+{% endblock %}
+{% block body %}
+<div class="col-sm-12">
+    <a href="" class="btn btn-success">Ajouter</a>
+    <table class="table">
+        <tr class="table-primary">         
+            <th scope="col">Images</th>
+            <th scope="col">Aliments</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Calories</th>
+            <th scope="col">Proteines</th>
+            <th scope="col">Glucides</th>
+            <th scope="col">Lipides</th>
+            <th scope="col">Actions</th>          
+        </tr>
+        <tbody>
+            {% for aliment in aliments %}
+          <tr>
+            <td><img style="width: 20%;" src="{{asset('images/' ~ aliment.image)}}"></td>
+            <td class="align-middle"><strong>{{aliment.nom}}</strong></td>
+            <td class="align-middle">{{aliment.prix}}</td>
+            <td class="align-middle">{{aliment.calorie}}</td>
+            <td class="align-middle">{{aliment.proteine}}</td>
+            <td class="align-middle">{{aliment.glucide}}</td>
+            <td class="align-middle">{{aliment.lipide}}</td>
+            <td class="align-middle">
+                <a href="{{path('admin_aliment_modification', {'id' : aliment.id})}}" class="btn btn-secondary">Modifier</button>
+                <a href="" class="btn btn-danger">Supprimer</button>
+            </td>
+          </tr>
+         {% endfor %}
+          
+        </tbody>
+      </table>
+</div>
+{% endblock %}
